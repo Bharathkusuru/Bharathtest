@@ -22,9 +22,9 @@ def main():
             if city not in city_prices:
                 city_price[city] = {"cheaptest": price, "costlist" : price}
             else:
-                if price < city_prices[city]["cheapest"]:
+                if price_str < city_prices[city]["cheapest"]:
                     city_prices[city]["cheapest"] = price
-                if price > city_prices[city]["costlist"]:
+                if price_str > city_prices[city]["costlist"]:
                     city_prices[city]["costlist"] = price
     with open(md_file_path,'r',encoding='utf-8') as f:md_content = f.read()
     result = df.groupby('city')["price"].agg(cheapest = 'min', costlist ='max').reset_index()
